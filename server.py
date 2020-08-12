@@ -1,3 +1,4 @@
+# Echo server program
 import socket
 
 HOST = '192.168.0.108'                 # Symbolic name meaning all available interfaces
@@ -12,5 +13,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = conn.recv(1024)
             if not data: break
             conn.sendall(data)
-            print (data)
-            conn.sendall(b'ON')
+ 
