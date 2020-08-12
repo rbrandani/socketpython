@@ -13,15 +13,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     while True:
         if (gpio.input(27)==gpio.HIGH):
-            s.sendall(b'ON')
+            s.sendall(b'ON') #mandando em byte o alto
         else:
             s.sendall(b'OFF')
         data = s.recv(1024)
-        if data.decode("utf-8") == "ON":
+        if data.decode("utf-8") == "ON": #comparando em string
             gpio.output(4, gpio.HIGH)
-            print('LIGADO')
         else:
             gpio.output(4, gpio.LOW)
-            print('DESLIGADO')
         time.sleep(0.5)    
         
